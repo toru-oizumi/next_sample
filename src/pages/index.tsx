@@ -13,23 +13,18 @@ const Home: VFC = () => (
       <title>{siteTitle}</title>
     </Head>
     <section className={utilStyles.headingMd}>
-      <h1 className='title'>
-        <Link href='/account/signUp'>
-          <a>Sign Up!</a>
-        </Link>
-      </h1>
-      <h1 className='title'>
+      <SignInForm nextUrl='/personal/home' />
+    </section>
+    <h3 className='title'>
+      <Link href='/account/signUp'>
+        <a>Sign Up!</a>
+      </Link>
+    </h3>
+    {/* <h1 className='title'>
         <Link href='/account/changePassword'>
           <a>changePassword</a>
         </Link>
-      </h1>
-      <h1 className='title'>
-        <Link href='/personal/home'>
-          <a>home</a>
-        </Link>
-      </h1>
-      <SignInForm nextUrl='/personal/home' />
-    </section>
+      </h1> */}
   </Layout>
 );
 export default Home;

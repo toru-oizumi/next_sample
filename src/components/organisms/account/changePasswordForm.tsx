@@ -12,6 +12,7 @@ import { ErrorTitle } from 'library/union/errorTitle';
 
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 import { ActionButton } from 'components/atoms/actionButton';
@@ -148,9 +149,17 @@ export const ChangePasswordForm: VFC<Props> = ({ nextUrl }) => {
           />
         )}
       />
-      <ActionButton type='submit' loading={loading} disabled={hasError}>
-        submit
-      </ActionButton>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row-reverse',
+          marginTop: 1,
+        }}
+      >
+        <ActionButton type='submit' loading={loading} disabled={hasError}>
+          submit
+        </ActionButton>
+      </Box>
     </form>
   );
 };
