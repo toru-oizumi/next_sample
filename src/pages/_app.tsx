@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 
-import { createRepository } from 'infrastructure/factory/repository';
 import { AppContext } from 'components/functions/context';
+import { createRepository } from 'infrastructure/factory/repository';
 import { createController } from 'interface/controller/controller';
 
 import 'styles/globals.css';

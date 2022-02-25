@@ -20,7 +20,7 @@ module.exports = {
     ecmaVersion: 12,
     project: './tsconfig.json', // plugin:@typescript-eslint/recommended-requiring-type-checkingの参照するtsconfig
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'import'],
 
   rules: {
     // console.log();OK
@@ -95,6 +95,50 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
         components: ['Link'],
         specialLink: ['hrefLeft', 'hrefRight'],
+      },
+    ],
+    'import/order': [
+      'warn',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
+        'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: ['builtin'],
+        alphabetize: { order: 'asc', caseInsensitive: true },
+        pathGroups: [
+          { pattern: 'src/domain/**', group: 'internal', position: 'before' },
+          {
+            pattern: 'src/application/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: 'src/interface/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: 'src/infrastructure/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: 'src/components/**',
+            group: 'internal',
+            position: 'before',
+          },
+          { pattern: 'src/pages/**', group: 'internal', position: 'before' },
+          { pattern: 'src/styles/**', group: 'internal', position: 'before' },
+          { pattern: 'src/library/**', group: 'internal', position: 'before' },
+        ],
       },
     ],
   },

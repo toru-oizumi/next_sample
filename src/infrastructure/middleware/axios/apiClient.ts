@@ -1,3 +1,6 @@
+import { Agent as HttpAgent } from 'http';
+import { Agent as HttpsAgent } from 'https';
+
 import axios, { AxiosInstance, AxiosResponse, ResponseType } from 'axios';
 
 export class ApiClient {
@@ -10,7 +13,11 @@ export class ApiClient {
     if (process.env.NEXT_PUBLIC_API_ORIGIN == null) {
       throw new Error('NEXT_PUBLIC_API_ORIGIN is not set.');
     } else {
+      const httpAgent = new HttpAgent({ keepAlive: true });
+      const httpsAgent = new HttpsAgent({ keepAlive: true });
       this.instance = axios.create({
+        httpAgent,
+        httpsAgent,
         withCredentials: true,
         baseURL: process.env.NEXT_PUBLIC_API_ORIGIN + baseUrl,
       });

@@ -1,6 +1,6 @@
-import type { VFC } from 'react';
-
 import { Html, Head, Main, NextScript } from 'next/document';
+
+import type { VFC } from 'react';
 
 const Document: VFC = () => (
   <Html>

@@ -1,9 +1,9 @@
-import type { VFC } from 'react';
-
 import Head from 'next/head';
 
-import { Layout } from 'components/templates/layout';
 import { ChangePasswordForm } from 'components/organisms/account/changePasswordForm';
+import { Layout } from 'components/templates/layout';
+
+import type { VFC } from 'react';
 
 const ChangePassword: VFC = () => (
   <Layout>

@@ -1,9 +1,8 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
-import { HttpStatusCodeType } from 'library/union/httpStatusCode';
-
 import { CustomError } from 'domain/model/customError';
 import { ErrorTitle, ErrorTitleType } from 'library/union/errorTitle';
+import { HttpStatusCodeType } from 'library/union/httpStatusCode';
 
 type IRespErrorData = {
   statusCode: HttpStatusCodeType;

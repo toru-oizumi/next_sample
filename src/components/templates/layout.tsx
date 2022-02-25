@@ -1,10 +1,12 @@
-import type { VFC } from 'react';
-
 import Head from 'next/head';
 import Link from 'next/link';
 import { ReactNode } from 'react';
+
 import utilStyles from 'styles/utils.module.css';
+
 import styles from './layout.module.css';
+
+import type { VFC } from 'react';
 
 const name = 'Sample Website';
 export const siteTitle = 'Next.js Sample Website';

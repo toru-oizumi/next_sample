@@ -1,7 +1,7 @@
-import { AccountUsecase } from 'application/usecase/accountUsecase';
-import { UserUsecase } from 'application/usecase/userUsecase';
 import { AccountInteractor } from 'application/interactor/accountInteractor';
 import { UserInteractor } from 'application/interactor/userInteractor';
+import { AccountUsecase } from 'application/usecase/accountUsecase';
+import { UserUsecase } from 'application/usecase/userUsecase';
 import { Repository } from 'domain/repository/repository';
 
 export interface Controller {

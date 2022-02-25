@@ -1,5 +1,5 @@
-import { DateTime } from './shared/dateTime';
 import { Chat } from './chat';
+import { DateTime } from './shared/dateTime';
 
 export type GroupID = string;
 export type GroupName = string;

@@ -1,10 +1,10 @@
 import { User } from 'domain/model/user';
+import { ApiClient } from 'infrastructure/middleware/axios/apiClient';
 import { createCustomError } from 'infrastructure/middleware/axios/error';
 import {
   UserRecord,
   toDomainUser,
 } from 'infrastructure/middleware/axios/model/user';
-import { ApiClient } from 'infrastructure/middleware/axios/apiClient';
 
 export const UserRepositoryImpl = () => {
   const apiClient = new ApiClient();

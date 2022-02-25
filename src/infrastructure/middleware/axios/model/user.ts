@@ -1,4 +1,5 @@
 import { User } from 'domain/model/user';
+
 import { GroupRecord, fromDomainGroup, toDomainGroup } from './group';
 
 export type UserRecord = {

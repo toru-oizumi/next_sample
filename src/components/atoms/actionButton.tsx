@@ -1,5 +1,6 @@
-import type { VFC, ButtonHTMLAttributes } from 'react';
 import { LoadingButton, LoadingButtonProps } from '@mui/lab/';
+
+import type { VFC, ButtonHTMLAttributes } from 'react';
 
 type ButtonProps = ButtonHTMLAttributes<LoadingButtonProps>;
 type Props = {

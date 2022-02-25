@@ -1,4 +1,5 @@
 import { Group } from 'domain/model/group';
+
 import { ChatRecord, fromDomainChat, toDomainChat } from './chat';
 
 export type GroupRecord = {

@@ -1,7 +1,7 @@
-import type { VFC, ReactNode } from 'react';
-
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+
+import type { VFC, ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;

@@ -1,9 +1,9 @@
-import type { VFC } from 'react';
-
 import Head from 'next/head';
 
-import { Layout } from 'components/templates/layout';
 import { UserList } from 'components/organisms/user/userList';
+import { Layout } from 'components/templates/layout';
+
+import type { VFC } from 'react';
 
 export const Home: VFC = () => (
   <Layout>

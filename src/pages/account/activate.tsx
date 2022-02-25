@@ -1,9 +1,9 @@
-import type { VFC } from 'react';
-
 import Head from 'next/head';
 
-import { Layout } from 'components/templates/layout';
 import { ActivateForm } from 'components/organisms/account/activateForm';
+import { Layout } from 'components/templates/layout';
+
+import type { VFC } from 'react';
 
 const Activate: VFC = () => (
   <Layout>

@@ -1,6 +1,7 @@
+import { configureStore } from '@reduxjs/toolkit';
 import { Store, combineReducers } from 'redux';
 import logger from 'redux-logger';
-import { configureStore } from '@reduxjs/toolkit';
+
 import { userSlice, initialState as userState } from './slice/user';
 
 const rootReducer = combineReducers({

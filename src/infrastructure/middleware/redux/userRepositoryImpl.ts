@@ -1,7 +1,7 @@
 import { SetUserParams } from 'domain/repository/userRepository';
 
-import { reduxStore } from './store';
 import { userSlice } from './slice/user';
+import { reduxStore } from './store';
 
 export const UserRepositoryImpl = () => {
   const setUser = (params: SetUserParams): Promise<void> =>
