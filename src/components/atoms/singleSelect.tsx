@@ -37,7 +37,6 @@ export const SingleSelect: VFC<Props> = ({
       <Select
         labelId={labelId}
         id={id}
-        autoWidth
         value={value}
         label={label}
         onChange={handleChange}

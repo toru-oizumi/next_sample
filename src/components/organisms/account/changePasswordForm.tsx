@@ -9,7 +9,6 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import * as zod from 'zod';
 
 import { ActionButton } from 'components/atoms/actionButton';
-import { getCustomErrorMessage } from 'components/functions/error';
 import { useController } from 'components/functions/hook';
 import { PasswordField } from 'components/molecules/passwordField';
 import { CustomError } from 'domain/model/customError';
@@ -60,10 +59,15 @@ export const ChangePasswordForm: VFC<Props> = ({ nextUrl }) => {
   });
 
   const onSubmit: SubmitHandler<Input> = (data) => {
+    const changePassword = usecase.changePassword(
+      data.userID,
+      data.currentPassword,
+      data.newPassword,
+    );
+
     setLoading(true);
     setErrorMessage('');
-    usecase
-      .changePassword(data.userID, data.currentPassword, data.newPassword)
+    changePassword()
       .then(async () => {
         await router.push(nextUrl);
       })
@@ -73,7 +77,7 @@ export const ChangePasswordForm: VFC<Props> = ({ nextUrl }) => {
         } else if (error.title === ErrorTitle.ActivationRequired) {
           setErrorMessage('Activationを行なってください');
         } else {
-          setErrorMessage(getCustomErrorMessage(error));
+          setErrorMessage(error.getErrorMessage());
         }
       })
       .finally(() => {

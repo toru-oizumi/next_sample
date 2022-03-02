@@ -1,22 +1,18 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { ReactNode } from 'react';
 
+import { siteTitle } from 'components/config';
 import utilStyles from 'styles/utils.module.css';
 
 import styles from './layout.module.css';
 
 import type { VFC } from 'react';
 
-const name = 'Sample Website';
-export const siteTitle = 'Next.js Sample Website';
-
 type Props = {
   children: ReactNode;
-  isLogin?: boolean;
 };
 
-export const Layout: VFC<Props> = ({ children, isLogin = false }) => (
+export const Layout: VFC<Props> = ({ children }) => (
   <div className={styles.container}>
     <Head>
       <link rel='icon' href='/favicon.ico' />
@@ -34,23 +30,8 @@ export const Layout: VFC<Props> = ({ children, isLogin = false }) => (
       <meta name='twitter:card' content='summary_large_image' />
     </Head>
     <header className={styles.header}>
-      {isLogin ? (
-        <h1 className={utilStyles.heading2Xl}>{name}</h1>
-      ) : (
-        <h2 className={utilStyles.headingLg}>
-          <Link href='/'>
-            <a className={utilStyles.colorInherit}>{name}</a>
-          </Link>
-        </h2>
-      )}
+      <h1 className={utilStyles.heading2Xl}>{siteTitle}</h1>
     </header>
     <main>{children}</main>
-    {!isLogin && (
-      <div className={styles.backToHome}>
-        <Link href='/'>
-          <a>← Back to login</a>
-        </Link>
-      </div>
-    )}
   </div>
 );

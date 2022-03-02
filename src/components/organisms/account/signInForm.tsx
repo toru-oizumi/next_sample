@@ -9,7 +9,6 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import * as zod from 'zod';
 
 import { ActionButton } from 'components/atoms/actionButton';
-import { getCustomErrorMessage } from 'components/functions/error';
 import { useController } from 'components/functions/hook';
 import { PasswordField } from 'components/molecules/passwordField';
 import { CustomError } from 'domain/model/customError';
@@ -44,10 +43,11 @@ export const SignInForm: VFC<Props> = ({ nextUrl }) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const onSubmit: SubmitHandler<Input> = (data) => {
+    const signIn = usecase.signIn(data.userID, data.password);
+
     setLoading(true);
     setErrorMessage('');
-    usecase
-      .signIn(data.userID, data.password)
+    signIn()
       .then(async () => {
         await router.push(nextUrl);
       })
@@ -56,7 +56,7 @@ export const SignInForm: VFC<Props> = ({ nextUrl }) => {
         if (error.title === ErrorTitle.AuthenticationFailed) {
           setErrorMessage('メールアドレス、またはパスワードが間違っています');
         } else {
-          setErrorMessage(getCustomErrorMessage(error));
+          setErrorMessage(error.getErrorMessage());
         }
       })
       .finally(() => {

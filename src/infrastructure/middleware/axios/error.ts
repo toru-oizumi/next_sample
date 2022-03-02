@@ -8,14 +8,14 @@ type IRespErrorData = {
   statusCode: HttpStatusCodeType;
   errorTitle: ErrorTitleType;
   detail: string;
-  messagesToBeDisplayed: string | null; // API側の設定としてstring or nullなのでnullを使用する
+  messageToBeDisplayed: string | null; // API側の設定としてstring or nullなのでnullを使用する
 };
 
 type ApiErrorContentType = {
   statusCode?: HttpStatusCodeType;
   title: ErrorTitleType;
   detail?: string;
-  messagesToBeDisplayed?: string;
+  messageToBeDisplayed?: string;
 };
 
 const getApiErrorContent = (
@@ -30,7 +30,7 @@ const getApiErrorContent = (
     statusCode: response.data.statusCode,
     title: response.data.errorTitle,
     detail: response.data.detail,
-    messagesToBeDisplayed: response.data.messagesToBeDisplayed ?? undefined,
+    messageToBeDisplayed: response.data.messageToBeDisplayed ?? undefined,
   };
 };
 
@@ -38,7 +38,7 @@ export const createCustomError = (error: Error) => {
   if (axios.isAxiosError(error)) {
     const axiosError = <AxiosError<IRespErrorData>>error;
     if (axiosError.response != null) {
-      const { statusCode, title, detail, messagesToBeDisplayed } =
+      const { statusCode, title, detail, messageToBeDisplayed } =
         getApiErrorContent(axiosError.response);
       return new CustomError({
         error,
@@ -46,7 +46,7 @@ export const createCustomError = (error: Error) => {
         statusCode,
         title,
         detail,
-        messagesToBeDisplayed,
+        messageToBeDisplayed,
       });
     }
     return new CustomError({

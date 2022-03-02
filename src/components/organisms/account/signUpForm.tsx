@@ -9,7 +9,6 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import * as zod from 'zod';
 
 import { ActionButton } from 'components/atoms/actionButton';
-import { getCustomErrorMessage } from 'components/functions/error';
 import { useController } from 'components/functions/hook';
 import { CustomError } from 'domain/model/customError';
 import { ErrorTitle } from 'library/union/errorTitle';
@@ -43,10 +42,11 @@ export const SignUpForm: VFC<Props> = ({ nextUrl }) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const onSubmit: SubmitHandler<Input> = (data) => {
+    const signUp = usecase.signUp(data.userID, data.name);
+
     setLoading(true);
     setErrorMessage('');
-    usecase
-      .signUp(data.userID, data.name)
+    signUp()
       .then(async () => {
         await router.push(
           `${nextUrl}?sendMail=&userID=${encodeURIComponent(data.userID)}`,
@@ -61,7 +61,7 @@ export const SignUpForm: VFC<Props> = ({ nextUrl }) => {
         } else if (error.title === ErrorTitle.EntityAlreadyExists) {
           setError('name', { message: '既に登録されている名前です' });
         } else {
-          setErrorMessage(getCustomErrorMessage(error));
+          setErrorMessage(error.getErrorMessage());
         }
       })
       .finally(() => {

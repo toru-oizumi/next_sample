@@ -22,6 +22,8 @@ export type ActivateParams = {
   newPassword: NewPassword;
 };
 
+export type SetAccountParams = Account;
+
 export type ChangePasswordParams = {
   email: Email;
   currentPassword: CurrentPassword;
@@ -32,6 +34,8 @@ export interface AccountRepository {
   signIn(params: SignInParams): Promise<Account>;
   signUp(params: SignUpParams): Promise<void>;
   activate(params: ActivateParams): Promise<Account>;
+  setAccount(params: SetAccountParams): Promise<void>;
+  resetAccount(): Promise<void>;
   changePassword(params: ChangePasswordParams): Promise<Account>;
   signOut(): Promise<void>;
 }

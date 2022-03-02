@@ -8,7 +8,7 @@ type CustomErrorParams = {
   statusCode?: HttpStatusCodeType;
   title: ErrorTitleType;
   detail?: string;
-  messagesToBeDisplayed?: string;
+  messageToBeDisplayed?: string;
 };
 
 export class CustomError extends Error {
@@ -18,7 +18,7 @@ export class CustomError extends Error {
 
   readonly detail?: string;
 
-  readonly messagesToBeDisplayed?: string;
+  readonly messageToBeDisplayed?: string;
 
   readonly constructedAt: DateTime;
 
@@ -34,13 +34,13 @@ export class CustomError extends Error {
     this.statusCode = params.statusCode;
     this.title = params.title;
     this.detail = params.detail;
-    this.messagesToBeDisplayed = params.messagesToBeDisplayed;
+    this.messageToBeDisplayed = params.messageToBeDisplayed;
     this.constructedAt = new DateTime();
   }
 
   public getErrorMessage(): string {
-    if (this.messagesToBeDisplayed != null) {
-      return this.messagesToBeDisplayed;
+    if (this.messageToBeDisplayed != null) {
+      return this.messageToBeDisplayed;
     }
     return this.title;
   }

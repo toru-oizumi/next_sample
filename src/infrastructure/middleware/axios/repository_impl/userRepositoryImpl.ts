@@ -1,3 +1,4 @@
+import { GroupID } from 'domain/model/group';
 import { User } from 'domain/model/user';
 import { ApiClient } from 'infrastructure/middleware/axios/apiClient';
 import { createCustomError } from 'infrastructure/middleware/axios/error';
@@ -10,14 +11,24 @@ export const UserRepositoryImpl = () => {
   const apiClient = new ApiClient();
 
   const findAll = async (): Promise<User[]> => {
-    try {
-      const resp = await apiClient.get('/users/all');
-      return (resp.data as UserRecord[]).map((v) => toDomainUser(v));
-    } catch (error) {
-      const customError = createCustomError(error as Error);
+    const resp = await apiClient.get('/users/all').catch((error: Error) => {
+      const customError = createCustomError(error);
       console.error(customError);
       throw customError;
-    }
+    });
+    return (resp.data as UserRecord[]).map((v) => toDomainUser(v));
   };
-  return { findAll };
+
+  const findByGroupID = async (groupID: GroupID): Promise<User[]> => {
+    const resp = await apiClient
+      .get(`/users/groups/${groupID}`)
+      .catch((error: Error) => {
+        const customError = createCustomError(error);
+        console.error(customError);
+        throw customError;
+      });
+    return (resp.data as UserRecord[]).map((v) => toDomainUser(v));
+  };
+
+  return { findAll, findByGroupID };
 };

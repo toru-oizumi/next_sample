@@ -2,13 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Store, combineReducers } from 'redux';
 import logger from 'redux-logger';
 
-import { userSlice, initialState as userState } from './slice/user';
+import { accountSlice, initialState as accountState } from './slice/account';
 
 const rootReducer = combineReducers({
-  user: userSlice.reducer,
+  account: accountSlice.reducer,
 });
 
-const preloadedState = () => ({ user: userState });
+const preloadedState = () => ({ account: accountState });
 
 export type StoreState = ReturnType<typeof preloadedState>;
 

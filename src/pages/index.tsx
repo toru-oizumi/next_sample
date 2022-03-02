@@ -1,19 +1,20 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
+import { HeadTitle } from 'components/atoms/headTitle';
 import { SignInForm } from 'components/organisms/account/signInForm';
-import { Layout, siteTitle } from 'components/templates/layout';
+import { Layout } from 'components/templates/layout';
 import utilStyles from 'styles/utils.module.css';
 
 import type { VFC } from 'react';
 
 const Home: VFC = () => (
-  <Layout isLogin>
+  <Layout>
     <Head>
-      <title>{siteTitle}</title>
+      <HeadTitle />
     </Head>
     <section className={utilStyles.headingMd}>
-      <SignInForm nextUrl='/personal/home' />
+      <SignInForm nextUrl='/signedIn/home' />
     </section>
     <h3 className='title'>
       <Link href='/account/signUp'>
