@@ -1,16 +1,16 @@
 import Head from 'next/head';
 
 import { ChangePasswordForm } from 'components/organisms/account/changePasswordForm';
-import { Layout } from 'components/templates/layout';
+import { BeforeSingIn } from 'components/templates/beforeSignIn';
 
 import type { VFC } from 'react';
 
 const ChangePassword: VFC = () => (
-  <Layout>
+  <BeforeSingIn>
     <Head>
       <title>ChangePassword</title>
     </Head>
     <ChangePasswordForm nextUrl='/posts/first-post' />
-  </Layout>
+  </BeforeSingIn>
 );
 export default ChangePassword;

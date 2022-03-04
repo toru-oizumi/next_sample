@@ -19,7 +19,7 @@ export const useController = () => {
 //   usecase: () => Promise<T>
 //   params: object
 // }
-export const useFetchData = <T, U>(key: string, usecase: U) =>
+export const useFetchData = <T>(key: string, usecase: () => Promise<T>) =>
   useSWR<T, CustomError>(key, usecase);
 
 // export const useFetchData = <T> (key: string, result: Promise<T>) =>

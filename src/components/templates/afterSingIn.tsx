@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
-import { SWRConfig } from 'swr';
 
 import { siteTitle } from 'components/config';
-import { CustomError } from 'domain/model/customError';
-import { ErrorTitle } from 'library/union/errorTitle';
+import { useController, useFetchData } from 'components/functions/hook';
+import { HeaderAppBar } from 'components/molecules/headerAppBar';
+import { NeedSignIn } from 'components/templates/needSignIn';
+import { Account } from 'domain/model/account';
 import utilStyles from 'styles/utils.module.css';
 
 import styles from './layout.module.css';
@@ -15,20 +15,21 @@ import type { VFC } from 'react';
 
 type Props = {
   children: ReactNode;
+  title: string;
 };
 
-export const NeedSignedIn: VFC<Props> = ({ children }) => {
-  const router = useRouter();
-  const onError = async (error: CustomError) => {
-    if (error.title === ErrorTitle.UnauthorizedRequest) {
-      await router.push(`/error/unauthorized?next=${decodeURI(router.asPath)}`);
-    } else if (error.title === ErrorTitle.Unknown) {
-      await router.push(`/error/unknown?next=${decodeURI(router.asPath)}`);
-    }
-  };
+const HeaderAppBarFetchedAccount: VFC<{ title: string }> = ({ title }) => {
+  const usecase = useController().account.useCase;
 
-  return (
+  const fetcher = usecase.fetchSignedInAccount();
+  const { data } = useFetchData<Account>('signedInAccount', fetcher);
+  return <HeaderAppBar title={title} account={data} />;
+};
+
+export const AfterSingIn: VFC<Props> = ({ children, title }) => (
+  <NeedSignIn>
     <div className={styles.container}>
+      <HeaderAppBarFetchedAccount title={title} />
       <Head>
         <link rel='icon' href='/favicon.ico' />
         <meta
@@ -51,19 +52,12 @@ export const NeedSignedIn: VFC<Props> = ({ children }) => {
           </Link>
         </h2>
       </header>
-      <SWRConfig
-        value={{
-          refreshInterval: 300000,
-          onError,
-        }}
-      >
-        <main>{children}</main>
-      </SWRConfig>
+      <main>{children}</main>
       <div className={styles.backToHome}>
         <Link href='/'>
           <a>← Back to login</a>
         </Link>
       </div>
     </div>
-  );
-};
+  </NeedSignIn>
+);

@@ -1,10 +1,21 @@
+import { Account } from 'domain/model/account';
 import { SetAccountParams } from 'domain/repository/accountRepository';
 
 import { accountSlice } from './slice/account';
 import { reduxStore } from './store';
 
 export const AccountRepositoryImpl = () => {
-  const setAccount = (params: SetAccountParams): Promise<void> =>
+  const getSignedInAccount = (): Promise<Account | undefined> =>
+    new Promise<Account | undefined>((resolve, reject) => {
+      try {
+        const state = reduxStore.getState();
+        resolve(state.account.account);
+      } catch (error) {
+        reject(error);
+      }
+    });
+
+  const setSignedInAccount = (params: SetAccountParams): Promise<void> =>
     new Promise<void>((resolve, reject) => {
       try {
         reduxStore.dispatch(accountSlice.actions.setAccount(params));
@@ -14,7 +25,7 @@ export const AccountRepositoryImpl = () => {
       }
     });
 
-  const resetAccount = (): Promise<void> =>
+  const resetSignedInAccount = (): Promise<void> =>
     new Promise<void>((resolve, reject) => {
       try {
         reduxStore.dispatch(accountSlice.actions.resetAccount());
@@ -24,5 +35,5 @@ export const AccountRepositoryImpl = () => {
       }
     });
 
-  return { setAccount, resetAccount };
+  return { getSignedInAccount, setSignedInAccount, resetSignedInAccount };
 };

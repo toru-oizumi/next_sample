@@ -12,7 +12,7 @@ type Props = {
   children: ReactNode;
 };
 
-export const Layout: VFC<Props> = ({ children }) => (
+export const BeforeSingIn: VFC<Props> = ({ children }) => (
   <div className={styles.container}>
     <Head>
       <link rel='icon' href='/favicon.ico' />

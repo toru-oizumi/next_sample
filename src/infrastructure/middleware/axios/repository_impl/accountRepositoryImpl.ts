@@ -47,6 +47,17 @@ export const AccountRepositoryImpl = () => {
     }
   };
 
+  const getAccount = async (): Promise<Account> => {
+    try {
+      const resp = await apiClient.get('/account');
+      return toDomainAccount(resp.data as AccountRecord);
+    } catch (error) {
+      const customError = createCustomError(error as Error);
+      console.error(customError);
+      throw customError;
+    }
+  };
+
   const changePassword = async (
     params: ChangePasswordParams,
   ): Promise<Account> => {
@@ -70,5 +81,5 @@ export const AccountRepositoryImpl = () => {
     }
   };
 
-  return { signIn, signUp, activate, changePassword, signOut };
+  return { signIn, signUp, activate, getAccount, changePassword, signOut };
 };

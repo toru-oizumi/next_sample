@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { headTitle } from 'components/atoms/headTitle';
-import { Layout } from 'components/templates/layout';
+import { BeforeSingIn } from 'components/templates/beforeSignIn';
 import styles from 'components/templates/layout.module.css';
 
 import type { VFC } from 'react';
@@ -23,7 +23,7 @@ const Unauthorized: VFC = () => {
     }
   }
   return (
-    <Layout>
+    <BeforeSingIn>
       <Head>{headTitle('Error:Unauthorized')}</Head>
       <Alert severity='error'>
         <AlertTitle>Unauthorized</AlertTitle>
@@ -35,7 +35,7 @@ const Unauthorized: VFC = () => {
           <a>← Back to sign in</a>
         </Link>
       </div>
-    </Layout>
+    </BeforeSingIn>
   );
 };
 export default Unauthorized;

@@ -1,3 +1,5 @@
+import { Account } from 'domain/model/account';
+
 export interface AccountUsecase {
   signIn(email: string, password: string): () => Promise<void>;
   signUp(email: string, name: string): () => Promise<void>;
@@ -6,7 +8,7 @@ export interface AccountUsecase {
     currentPassword: string,
     newPassword: string,
   ): () => Promise<void>;
-  fetchSignedInAccount(): () => Promise<void>;
+  fetchSignedInAccount(): () => Promise<Account>;
   isSignedIn(): () => Promise<boolean>;
   removeSignedInAccount(): () => Promise<void>;
   changePassword(

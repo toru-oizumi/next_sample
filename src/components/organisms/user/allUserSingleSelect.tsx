@@ -17,7 +17,7 @@ export const AllUserSingleSelect: VFC = () => {
     setUserID(value);
   };
 
-  const { data, error } = useFetchData<User[], () => Promise<User[]>>(
+  const { data, error } = useFetchData<User[]>(
     'allUserSingleSelect',
     usecase.findAll(),
   );

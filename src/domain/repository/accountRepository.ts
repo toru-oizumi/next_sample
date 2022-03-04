@@ -34,8 +34,11 @@ export interface AccountRepository {
   signIn(params: SignInParams): Promise<Account>;
   signUp(params: SignUpParams): Promise<void>;
   activate(params: ActivateParams): Promise<Account>;
-  setAccount(params: SetAccountParams): Promise<void>;
-  resetAccount(): Promise<void>;
+  getAccount(): Promise<Account>;
+
   changePassword(params: ChangePasswordParams): Promise<Account>;
+  getSignedInAccount(): Promise<Account | undefined>;
+  setSignedInAccount(params: SetAccountParams): Promise<void>;
+  resetSignedInAccount(): Promise<void>;
   signOut(): Promise<void>;
 }

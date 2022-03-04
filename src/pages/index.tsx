@@ -3,13 +3,13 @@ import Link from 'next/link';
 
 import { HeadTitle } from 'components/atoms/headTitle';
 import { SignInForm } from 'components/organisms/account/signInForm';
-import { Layout } from 'components/templates/layout';
+import { BeforeSingIn } from 'components/templates/beforeSignIn';
 import utilStyles from 'styles/utils.module.css';
 
 import type { VFC } from 'react';
 
-const Home: VFC = () => (
-  <Layout>
+const Index: VFC = () => (
+  <BeforeSingIn>
     <Head>
       <HeadTitle />
     </Head>
@@ -26,6 +26,6 @@ const Home: VFC = () => (
           <a>changePassword</a>
         </Link>
       </h1> */}
-  </Layout>
+  </BeforeSingIn>
 );
-export default Home;
+export default Index;
