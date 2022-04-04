@@ -46,9 +46,7 @@ export class DateTime {
   // fromがreceiverより未来なら負の値を返す
   // a < bのときb.dayDiff(a) > 0
   public dayDiff(dateTime: DateTime): number {
-    return this.value
-      .startOf('day')
-      .diff(dateTime.value.startOf('day'), 'days');
+    return this.value.startOf('day').diff(dateTime.value.startOf('day'), 'days');
   }
 
   public formatToYMDHMS(): string {

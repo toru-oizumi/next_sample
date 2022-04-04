@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
@@ -13,6 +14,7 @@ module.exports = {
     'prettier', // prettierと競合するESLintのルールを無効化します],
   ],
   parser: '@typescript-eslint/parser',
+  ignorePatterns: ['.eslintrc.js', 'commitlint.config.js', 'next.config.js', 'node_modules/*'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -29,6 +31,12 @@ module.exports = {
     // see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md#how-to-use
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      {
+        checksVoidReturn: false,
+      },
+    ],
 
     // omit .ts .tsx in import statement
     // see https://stackoverflow.com/questions/59265981/typescript-eslint-missing-file-extension-ts-import-extensions
@@ -100,16 +108,7 @@ module.exports = {
     'import/order': [
       'warn',
       {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-          'object',
-          'type',
-        ],
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
         'newlines-between': 'always',
         pathGroupsExcludedImportTypes: ['builtin'],
         alphabetize: { order: 'asc', caseInsensitive: true },

@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import { SWRConfig } from 'swr';
 
-import { CustomError } from 'domain/model/customError';
-import { ErrorTitle } from 'library/union/errorTitle';
+import { CustomError } from '@/domain/model/customError';
+import { ErrorTitle } from '@/utils/union/errorTitle';
 
 import type { VFC } from 'react';
 

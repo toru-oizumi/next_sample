@@ -4,9 +4,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { headTitle } from 'components/atoms/headTitle';
-import { BeforeSingIn } from 'components/templates/beforeSignIn';
-import styles from 'components/templates/layout.module.css';
+import { headTitle } from '@/components/atoms/headTitle';
+import { BeforeSingIn } from '@/components/templates/beforeSignIn';
+import styles from '@/components/templates/layout.module.css';
 
 import type { VFC } from 'react';
 
@@ -25,7 +25,7 @@ const Unauthorized: VFC = () => {
   return (
     <BeforeSingIn>
       <Head>{headTitle('Error:Unauthorized')}</Head>
-      <Alert severity='error'>
+      <Alert severity="error">
         <AlertTitle>Unauthorized</AlertTitle>
         <p>You have not signed in or your session has expired.</p>
         <p>Please sign in again.</p>

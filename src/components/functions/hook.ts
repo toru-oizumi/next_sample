@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import useSWR from 'swr';
 
-import { CustomError } from 'domain/model/customError';
+import { CustomError } from '@/domain/model/customError';
 
 import { AppContext } from './context';
 

@@ -8,10 +8,10 @@ import { useState } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import * as zod from 'zod';
 
-import { ActionButton } from 'components/atoms/actionButton';
-import { useController } from 'components/functions/hook';
-import { CustomError } from 'domain/model/customError';
-import { ErrorTitle } from 'library/union/errorTitle';
+import { ActionButton } from '@/components/atoms/actionButton';
+import { useController } from '@/components/functions/hook';
+import { CustomError } from '@/domain/model/customError';
+import { ErrorTitle } from '@/utils/union/errorTitle';
 
 import type { VFC } from 'react';
 
@@ -48,9 +48,7 @@ export const SignUpForm: VFC<Props> = ({ nextUrl }) => {
     setErrorMessage('');
     signUp()
       .then(async () => {
-        await router.push(
-          `${nextUrl}?sendMail=&userID=${encodeURIComponent(data.userID)}`,
-        );
+        await router.push(`${nextUrl}?sendMail=&userID=${encodeURIComponent(data.userID)}`);
       })
       .catch((error: CustomError) => {
         if (error.title === ErrorTitle.EmailAlreadyExists) {
@@ -74,23 +72,23 @@ export const SignUpForm: VFC<Props> = ({ nextUrl }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {errorMessage && (
-        <Alert severity='error' onClose={() => setErrorMessage('')}>
+        <Alert severity="error" onClose={() => setErrorMessage('')}>
           <AlertTitle>Error</AlertTitle>
           {errorMessage}
         </Alert>
       )}
       <Controller
         control={control}
-        name='userID'
-        defaultValue=''
+        name="userID"
+        defaultValue=""
         render={({ field }) => (
           <TextField
             {...field}
-            label='メールアドレス'
+            label="メールアドレス"
             fullWidth
-            margin='normal'
-            placeholder='メールアドレス'
-            autoComplete='username'
+            margin="normal"
+            placeholder="メールアドレス"
+            autoComplete="username"
             error={Boolean(errors.userID)}
             helperText={errors.userID?.message}
           />
@@ -98,16 +96,16 @@ export const SignUpForm: VFC<Props> = ({ nextUrl }) => {
       />
       <Controller
         control={control}
-        name='name'
-        defaultValue=''
+        name="name"
+        defaultValue=""
         render={({ field }) => (
           <TextField
             {...field}
-            label='名前'
+            label="名前"
             fullWidth
-            margin='normal'
-            placeholder='名前'
-            autoComplete='name'
+            margin="normal"
+            placeholder="名前"
+            autoComplete="name"
             error={Boolean(errors.name)}
             helperText={errors.name?.message}
           />
@@ -120,7 +118,7 @@ export const SignUpForm: VFC<Props> = ({ nextUrl }) => {
           marginTop: 1,
         }}
       >
-        <ActionButton type='submit' loading={loading} disabled={hasError}>
+        <ActionButton type="submit" loading={loading} disabled={hasError}>
           Sign Up
         </ActionButton>
       </Box>

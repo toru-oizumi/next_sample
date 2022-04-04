@@ -1,10 +1,10 @@
 import { AppProps } from 'next/app';
 
-import { AppContext } from 'components/functions/context';
-import { createRepository } from 'infrastructure/factory/repository';
-import { createController } from 'interface/controller/controller';
+import { AppContext } from '@/components/functions/context';
+import { createRepository } from '@/infrastructure/factory/repository';
+import { createController } from '@/interface/controller/controller';
 
-import 'styles/globals.css';
+import '@/styles/globals.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const repository = createRepository();

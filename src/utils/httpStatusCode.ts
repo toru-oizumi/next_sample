@@ -1,7 +1,7 @@
-import { HttpStatusCode } from 'library/union/httpStatusCode';
+import { HttpStatusCode } from '@/utils/union/httpStatusCode';
 
 export const isInformationalResponse = (
-  code: typeof HttpStatusCode[keyof typeof HttpStatusCode],
+  code: typeof HttpStatusCode[keyof typeof HttpStatusCode]
 ): boolean =>
   [
     HttpStatusCode.Continue,
@@ -10,9 +10,7 @@ export const isInformationalResponse = (
     HttpStatusCode.EarlyHints,
   ].some((v) => v === code);
 
-export const isSuccess = (
-  code: typeof HttpStatusCode[keyof typeof HttpStatusCode],
-): boolean =>
+export const isSuccess = (code: typeof HttpStatusCode[keyof typeof HttpStatusCode]): boolean =>
   [
     HttpStatusCode.OK,
     HttpStatusCode.Created,
@@ -26,9 +24,7 @@ export const isSuccess = (
     HttpStatusCode.IMUsed,
   ].some((v) => v === code);
 
-export const isRedirection = (
-  code: typeof HttpStatusCode[keyof typeof HttpStatusCode],
-): boolean =>
+export const isRedirection = (code: typeof HttpStatusCode[keyof typeof HttpStatusCode]): boolean =>
   [
     HttpStatusCode.MultipleChoices,
     HttpStatusCode.MovedPermanently,
@@ -41,9 +37,7 @@ export const isRedirection = (
     HttpStatusCode.PermanentRedirect,
   ].some((v) => v === code);
 
-export const isClientError = (
-  code: typeof HttpStatusCode[keyof typeof HttpStatusCode],
-): boolean =>
+export const isClientError = (code: typeof HttpStatusCode[keyof typeof HttpStatusCode]): boolean =>
   [
     HttpStatusCode.BadRequest,
     HttpStatusCode.Unauthorized,
@@ -75,9 +69,7 @@ export const isClientError = (
     HttpStatusCode.UnavailableForLegalReasons,
   ].some((v) => v === code);
 
-export const isServerError = (
-  code: typeof HttpStatusCode[keyof typeof HttpStatusCode],
-): boolean =>
+export const isServerError = (code: typeof HttpStatusCode[keyof typeof HttpStatusCode]): boolean =>
   [
     HttpStatusCode.InternalServerError,
     HttpStatusCode.NotImplemented,

@@ -66,5 +66,4 @@ export const HttpStatusCode = {
   NotExtended: 510,
   NetworkAuthenticationRequired: 511,
 } as const;
-export type HttpStatusCodeType =
-  typeof HttpStatusCode[keyof typeof HttpStatusCode];
+export type HttpStatusCodeType = typeof HttpStatusCode[keyof typeof HttpStatusCode];

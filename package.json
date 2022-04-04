@@ -10,6 +10,21 @@
     "format": "eslint --fix . && prettier --write .",
     "postinstall": "husky install"
   },
+  "browserslist": {
+    "production": [
+      ">1%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "resolutions": {
+    "babel-loader": "8.1.0"
+  },
   "dependencies": {
     "@emotion/cache": "^11.7.1",
     "@emotion/react": "^11.8.1",
@@ -35,6 +50,7 @@
     "zod": "^3.11.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.8",
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
     "@emotion/babel-plugin": "^11.7.2",
@@ -45,6 +61,7 @@
     "@types/redux-logger": "^3.0.9",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
+    "babel-loader": "^8.2.4",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "12.1.4",

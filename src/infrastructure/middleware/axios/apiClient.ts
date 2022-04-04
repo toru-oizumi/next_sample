@@ -34,7 +34,7 @@ export class ApiClient {
   public post(
     path: string,
     data: { [key: string]: any } | null = null, // eslint-disable-line @typescript-eslint/no-explicit-any
-    multiPartForm = false,
+    multiPartForm = false
   ): Promise<AxiosResponse> {
     const options: { headers: { [key: string]: string } } = {
       headers: {},
@@ -55,7 +55,7 @@ export class ApiClient {
   public put(
     path: string,
     data: { [key: string]: any } | null = null, // eslint-disable-line @typescript-eslint/no-explicit-any
-    multiPartForm = false,
+    multiPartForm = false
   ): Promise<AxiosResponse> {
     const options: { headers: { [key: string]: string } } = {
       headers: {},
@@ -76,7 +76,7 @@ export class ApiClient {
   public patch(
     path: string,
     data: { [key: string]: any } | null = null, // eslint-disable-line @typescript-eslint/no-explicit-any
-    multiPartForm = false,
+    multiPartForm = false
   ): Promise<AxiosResponse> {
     const options: { headers: { [key: string]: string } } = {
       headers: {},
@@ -111,7 +111,7 @@ export class ApiClient {
    */
   public get(
     path: string,
-    params: { [key: string]: string | number | boolean } | null = null,
+    params: { [key: string]: string | number | boolean } | null = null
   ): Promise<AxiosResponse> {
     const options: {
       headers: { [key: string]: string };
@@ -134,7 +134,7 @@ export class ApiClient {
    */
   public fileDownload(
     path: string,
-    params: { [key: string]: string | number | boolean } | null = null,
+    params: { [key: string]: string | number | boolean } | null = null
   ): Promise<AxiosResponse> {
     const options: {
       headers: { [key: string]: string };

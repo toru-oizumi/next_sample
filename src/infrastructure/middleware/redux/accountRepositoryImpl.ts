@@ -1,5 +1,5 @@
-import { Account } from 'domain/model/account';
-import { SetAccountParams } from 'domain/repository/accountRepository';
+import { Account } from '@/domain/model/account';
+import { SetAccountParams } from '@/domain/repository/accountRepository';
 
 import { accountSlice } from './slice/account';
 import { reduxStore } from './store';

@@ -4,9 +4,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { headTitle } from 'components/atoms/headTitle';
-import { BeforeSingIn } from 'components/templates/beforeSignIn';
-import styles from 'components/templates/layout.module.css';
+import { headTitle } from '@/components/atoms/headTitle';
+import { BeforeSingIn } from '@/components/templates/beforeSignIn';
+import styles from '@/components/templates/layout.module.css';
 
 import type { VFC } from 'react';
 
@@ -25,7 +25,7 @@ const Unknown: VFC = () => {
   return (
     <BeforeSingIn>
       <Head>{headTitle('Error:Unknown')}</Head>
-      <Alert severity='error'>
+      <Alert severity="error">
         <AlertTitle>Unknown</AlertTitle>
         <p>An unknown error has occurred.</p>
         <p>Please sign in again.</p>

@@ -17,14 +17,7 @@ type Props = {
   onChange: (v: string) => void;
 };
 
-export const SingleSelect: VFC<Props> = ({
-  id,
-  minWidth = 100,
-  label,
-  value,
-  items,
-  onChange,
-}) => {
+export const SingleSelect: VFC<Props> = ({ id, minWidth = 100, label, value, items, onChange }) => {
   const labelId = `${id}-label`;
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -34,13 +27,7 @@ export const SingleSelect: VFC<Props> = ({
   return (
     <FormControl sx={{ m: 1, minWidth }}>
       <InputLabel id={labelId}>{label}</InputLabel>
-      <Select
-        labelId={labelId}
-        id={id}
-        value={value}
-        label={label}
-        onChange={handleChange}
-      >
+      <Select labelId={labelId} id={id} value={value} label={label} onChange={handleChange}>
         {items.map((v) => (
           <MenuItem key={`${id}-${v.value.toString()}`} value={v.value}>
             {v.name}

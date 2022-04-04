@@ -1,4 +1,4 @@
-import { Account } from 'domain/model/account';
+import { Account } from '@/domain/model/account';
 
 import { UserRecord, fromDomainUser, toDomainUser } from './user';
 

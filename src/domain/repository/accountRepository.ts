@@ -1,10 +1,5 @@
-import {
-  Account,
-  Email,
-  CurrentPassword,
-  NewPassword,
-} from 'domain/model/account';
-import { UserName } from 'domain/model/user';
+import { Account, Email, CurrentPassword, NewPassword } from '@/domain/model/account';
+import { UserName } from '@/domain/model/user';
 
 export type SignInParams = {
   email: Email;

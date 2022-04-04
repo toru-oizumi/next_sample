@@ -1,4 +1,4 @@
-import { siteTitle } from 'components/config';
+import { siteTitle } from '@/components/config';
 
 import type { VFC } from 'react';
 

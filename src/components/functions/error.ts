@@ -1,15 +1,12 @@
-import { CustomError } from 'domain/model/customError';
-import { ErrorTitle, ErrorTitleType } from 'library/union/errorTitle';
+import { CustomError } from '@/domain/model/customError';
+import { ErrorTitle, ErrorTitleType } from '@/utils/union/errorTitle';
 
 export type ComponentError = {
   title: ErrorTitleType;
   message: string;
 };
 
-export const getComponentError = (
-  error: Error,
-  message?: string,
-): ComponentError => {
+export const getComponentError = (error: Error, message?: string): ComponentError => {
   if (error instanceof CustomError) {
     if (message != null) {
       return {

@@ -1,4 +1,4 @@
-import { Chat } from 'domain/model/chat';
+import { Chat } from '@/domain/model/chat';
 
 export type ChatRecord = {
   chatID: string;

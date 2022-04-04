@@ -10,8 +10,8 @@ import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { useController } from 'components/functions/hook';
-import { Account } from 'domain/model/account';
+import { useController } from '@/components/functions/hook';
+import { Account } from '@/domain/model/account';
 
 import type { VFC } from 'react';
 
@@ -67,35 +67,35 @@ export const HeaderAppBar: VFC<Props> = ({ title, account }) => {
         open={open}
         autoHideDuration={5000}
         onClose={handleSnackBarClose}
-        message='This menu is not implemented.'
+        message="This menu is not implemented."
       />
       <AppBar>
         <Toolbar>
           <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
-            aria-label='menu'
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
             sx={{ mr: 2 }}
             onClick={handleMenuClick}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {title}
           </Typography>
           <Button
-            size='large'
-            aria-label='account'
-            aria-controls='menu-app-bar'
-            aria-haspopup='true'
+            size="large"
+            aria-label="account"
+            aria-controls="menu-app-bar"
+            aria-haspopup="true"
             onClick={handleNameMenu}
-            color='inherit'
+            color="inherit"
           >
             {account?.user.name}
           </Button>
           <Menu
-            id='menu-app-bar'
+            id="menu-app-bar"
             anchorEl={anchorEl}
             anchorOrigin={{
               vertical: 'top',

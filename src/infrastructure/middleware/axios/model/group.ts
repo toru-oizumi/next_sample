@@ -1,4 +1,4 @@
-import { Group } from 'domain/model/group';
+import { Group } from '@/domain/model/group';
 
 import { ChatRecord, fromDomainChat, toDomainChat } from './chat';
 

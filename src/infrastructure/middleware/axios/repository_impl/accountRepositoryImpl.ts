@@ -1,16 +1,13 @@
-import { Account } from 'domain/model/account';
+import { Account } from '@/domain/model/account';
 import {
   SignInParams,
   SignUpParams,
   ActivateParams,
   ChangePasswordParams,
-} from 'domain/repository/accountRepository';
-import { ApiClient } from 'infrastructure/middleware/axios/apiClient';
-import { createCustomError } from 'infrastructure/middleware/axios/error';
-import {
-  AccountRecord,
-  toDomainAccount,
-} from 'infrastructure/middleware/axios/model/account';
+} from '@/domain/repository/accountRepository';
+import { ApiClient } from '@/infrastructure/middleware/axios/apiClient';
+import { createCustomError } from '@/infrastructure/middleware/axios/error';
+import { AccountRecord, toDomainAccount } from '@/infrastructure/middleware/axios/model/account';
 
 export const AccountRepositoryImpl = () => {
   const apiClient = new ApiClient();
@@ -58,9 +55,7 @@ export const AccountRepositoryImpl = () => {
     }
   };
 
-  const changePassword = async (
-    params: ChangePasswordParams,
-  ): Promise<Account> => {
+  const changePassword = async (params: ChangePasswordParams): Promise<Account> => {
     try {
       const resp = await apiClient.post('/change-password', params);
       return toDomainAccount(resp.data as AccountRecord);

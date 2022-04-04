@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Account } from 'domain/model/account';
+import { Account } from '@/domain/model/account';
 
 export type accountState = {
   account?: Account;

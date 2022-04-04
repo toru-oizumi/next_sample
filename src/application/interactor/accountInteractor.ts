@@ -1,5 +1,5 @@
-import { Account } from 'domain/model/account';
-import { Repository } from 'domain/repository/repository';
+import { Account } from '@/domain/model/account';
+import { Repository } from '@/domain/repository/repository';
 
 export const AccountInteractor = (repository: Repository) => {
   const signIn =
@@ -15,11 +15,7 @@ export const AccountInteractor = (repository: Repository) => {
       repository.account.signUp({ email, name });
 
   const activate =
-    (
-      email: string,
-      currentPassword: string,
-      newPassword: string,
-    ): (() => Promise<void>) =>
+    (email: string, currentPassword: string, newPassword: string): (() => Promise<void>) =>
     async () => {
       const account = await repository.account.activate({
         email,
@@ -58,11 +54,7 @@ export const AccountInteractor = (repository: Repository) => {
     repository.account.resetSignedInAccount();
 
   const changePassword =
-    (
-      email: string,
-      currentPassword: string,
-      newPassword: string,
-    ): (() => Promise<void>) =>
+    (email: string, currentPassword: string, newPassword: string): (() => Promise<void>) =>
     async () => {
       const account = await repository.account.changePassword({
         email,

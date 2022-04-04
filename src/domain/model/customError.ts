@@ -1,6 +1,6 @@
-import { DateTime } from 'library/dateTime';
-import { ErrorTitleType } from 'library/union/errorTitle';
-import { HttpStatusCodeType } from 'library/union/httpStatusCode';
+import { DateTime } from '@/utils/dateTime';
+import { ErrorTitleType } from '@/utils/union/errorTitle';
+import { HttpStatusCodeType } from '@/utils/union/httpStatusCode';
 
 type CustomErrorParams = {
   error?: Error;
